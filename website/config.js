@@ -1,14 +1,12 @@
-var api = "http://xmr.xminingpool.com:2117";
+var api = "http://poolhost.com:1117";
 
-var coinUnits = 1000000000000;
+var poolHost = "poolhost.com";
 
-var poolHost = "xmr.xminingpool.com";
+var irc = "irc.freenode.net/#poolhost";
 
-var irc = "irc.freenode.net/#monero";
+var email = "support@poolhost.com";
 
-var email = "support@cryppit.com";
-
-var cryptonatorWidget = ["XMR-BTC", "XMR-USD", "XMR-EUR"];
+var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
 
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
 

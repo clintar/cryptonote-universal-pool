@@ -10,7 +10,7 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.0/jquery.timeago.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -152,7 +152,7 @@
     var lastStats;
 
     function getReadableCoins(coins, digits, withoutSymbol){
-        var amount = (parseInt(coins || 0) / coinUnits).toFixed(digits || coinUnits.toString().length - 1);
+        var amount = (parseInt(coins || 0) / lastStats.config.coinUnits).toFixed(digits || lastStats.config.coinUnits.toString().length - 1);
         return amount + (withoutSymbol ? '' : (' ' + lastStats.config.symbol));
     }
 
@@ -256,6 +256,10 @@
         });
     }
 
+    function floatToString(float) {
+        return float.toFixed(6).replace(/[0\.]+$/, '');
+    }
+
 
     var xhrPageLoading;
     function routePage(loadedCallback) {
@@ -287,6 +291,11 @@
 
     function updateIndex(){
         updateText('coinName', lastStats.config.coin);
+        updateText('poolVersion', lastStats.config.version);
+    }
+
+    function getBlockchainUrl(id) {
+        return blockchainExplorer.replace('{symbol}', lastStats.config.symbol.toLowerCase()).replace('{id}', id);
     }
 
     $(function(){
@@ -353,7 +362,8 @@
 
 <footer>
     <div class="text-muted">
-        Powered by <a target="_blank" href="//github.com/fancoder/cryptonote-universal-pool"><i class="fa fa-github"></i> cryptonote-universal-pool</a>
+        Powered by <a target="_blank" href="//cryptonotemining.org"><i class="fa fa-github"></i> cryptonote-universal-pool</a>
+        <span id="poolVersion"></span>
         open sourced under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>
     </div>
 </footer>

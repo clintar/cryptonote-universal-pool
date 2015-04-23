@@ -53,6 +53,15 @@
         .stats > div > .fa {
             width: 25px;
         }
+		.stats > div.donationStats .fa-tachometer {
+			color: green;
+		}
+		#yourDonationrateHolder{
+			color:green;
+		}
+		.stats > div:not(#addressError) > span#yourDonationrateHolder {
+			color: green;
+		}
         .stats > div > span:first-of-type{
             font-weight: bold;
         }
@@ -330,11 +339,11 @@
                 </a></li>
 
                 <li><a class="hot_link" data-page="getting_started.html" href="#getting_started">
-                    <i class="fa fa-rocket"></i> Getting Started
+                    <i class="fa fa-rocket"></i> Info
                 </a></li>
 
                 <li><a class="hot_link" data-page="pool_blocks.html" href="#pool_blocks">
-                    <i class="fa fa-cubes"></i> Pool Blocks
+                    <i class="fa fa-cubes"></i> Blocks
                 </a></li>
 
                 <li><a class="hot_link" data-page="payments.html" href="#payments">
@@ -343,6 +352,10 @@
 
                 <li><a class="hot_link" data-page="support.html" href="#support">
                     <i class="fa fa-comments"></i> Support
+                </a></li>
+				
+				<li><a class="hot_link" data-page="register_alias.html" href="#register_alias">
+                    <i class="fa fa-user"></i> Get Alias
                 </a></li>
 
             </ul>

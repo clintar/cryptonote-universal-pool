@@ -29,10 +29,13 @@ if (cluster.isWorker){
             break;
         case 'cli':
             require('./lib/cli.js');
-            break
+            break;
         case 'chartsDataCollector':
             require('./lib/chartsDataCollector.js');
-            break
+            break;
+        case 'purchaseProcessor':
+            require('./lib/purchaseProcessor.js');
+            break;
 
     }
     return;
@@ -44,7 +47,7 @@ require('./lib/exceptionWriter.js')(logSystem);
 
 var singleModule = (function(){
 
-    var validModules = ['pool', 'api', 'unlocker', 'payments', 'chartsDataCollector'];
+    var validModules = ['pool', 'api', 'unlocker', 'payments', 'chartsDataCollector', 'purchases'];
 
     for (var i = 0; i < process.argv.length; i++){
         if (process.argv[i].indexOf('-module=') === 0){
@@ -82,6 +85,9 @@ var singleModule = (function(){
                 case 'chartsDataCollector':
                     spawnChartsDataCollector();
                     break;
+                case 'purchases':
+                    spawnPurchaseProcessor();
+                    break;
             }
         }
         else{
@@ -90,6 +96,7 @@ var singleModule = (function(){
             spawnPaymentProcessor();
             spawnApi();
             spawnChartsDataCollector();
+			spawnPurchaseProcessor();
         }
 
         spawnCli();
@@ -238,6 +245,17 @@ function spawnCli(){
 
 }
 
+function spawnPurchaseProcessor(){
+	var worker = cluster.fork({
+        workerType: 'purchaseProcessor'
+    });
+	    worker.on('exit', function(code, signal){
+        log('error', logSystem, 'Payment Checker died, spawning replacement...');
+        setTimeout(function(){
+            spawnApi();
+        }, 2000);
+    });
+}
 function spawnChartsDataCollector(){
     if (!config.charts) return;
 

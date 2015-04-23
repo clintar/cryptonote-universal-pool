@@ -251,6 +251,7 @@
             <div class="yourStats"><i class="fa fa-money"></i> Total Paid: <span id="yourPaid"></span></div>
             <div class="yourStats"><i class="fa fa-clock-o"></i> Last Share Submitted: <span id="yourLastShare"></span></div>
             <div class="yourStats"><i class="fa fa-tachometer"></i> Hash Rate: <span id="yourHashrateHolder"></span></div>
+			<div class="yourStats donationStats"><i class="fa fa-tachometer"></i> Donated Hash Rate: <span id="yourDonationrateHolder"></span></div>
             <div class="yourStats"><i class="fa fa-cloud-upload"></i> Total Hashes Submitted: <span id="yourHashes"></span></div>
         </div>
         <div class="col-sm-4">            
@@ -526,10 +527,11 @@
                         updateText('yourLastShare', 'Never');
 
                     updateText('yourHashrateHolder', (data.stats.hashrate || '0 H') + '/sec');
+					updateText('yourDonationrateHolder', (data.stats.donationHashrate || '0 H') + '/sec');
                     updateText('yourHashes', (data.stats.hashes || 0).toString());
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
-
+					
                     renderPayments(data.payments);
 
                     $('.yourStats').show(function(){
@@ -543,7 +545,14 @@
                         });
                     });
                     
-                    
+                    if(data.stats.donationHashrate)
+					{
+						$('.donationStats').show();
+					}
+					else
+					{
+						$('.donationStats').hide();
+					}
 
                     docCookies.setItem('mining_address', address, Infinity);
 

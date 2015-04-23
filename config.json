@@ -1,8 +1,6 @@
 {
-    "coin": "ducknote",
-    "symbol": "XDN",
-    "coinUnits": 100000000,
-    "coinDifficultyTarget": 240,
+    "coin": "boolberry",
+    "symbol": "BBR",
 
     "logging": {
         "files": {
@@ -15,33 +13,39 @@
             "colors": true
         }
     },
-
+    "coinUnits": 1000000000000,
+    "coinDifficultyTarget": 120,
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "ddehi53dwGSBEXdhTYtga2R3fS4y9hRz4YHAsLABJpH75yUd5EDQmuL3yDBj1mG6MMeDfydY9vp4zFVVNQ99FTYq2PpsFJP2y",
+        "poolAddress": "1Ho5gYpMDmfaQ68L5bTBg8dSvCw3Yp5YSBkbyz5yYXsPbbVvWNYwya16SB8JZBtbX8Qk94vgm4Lkz3HgP8Bskgha8csJ8F8",
         "blockRefreshInterval": 1000,
-        "minerTimeout": 900,
+        "scratchpadFilePath": "/home/ubuntu/cryptonote-universal-pool/website/new-website2/scratchpad.bin",
+        "scratchpadFileUpdateInterval": 14400000,
+        "minerTimeout": 1200,
         "ports": [
             {
-                "port": 3333,
-                "difficulty": 100,
-                "desc": "Low end hardware"
-            },
-            {
                 "port": 5555,
-                "difficulty": 2000,
-                "desc": "Mid range hardware"
+                "protocol": "tcp",
+                "difficulty": 1250000,
+                "desc": "Low end / Mid range CPUs"
             },
             {
                 "port": 7777,
-                "difficulty": 10000,
-                "desc": "High end hardware"
+                "protocol": "tcp",
+                "difficulty": 25000000,
+                "desc": "High end CPUs / low end/mid range GPUs"
             },
             {
                 "port": 8888,
-                "difficulty": 10000,
-                "desc": "Hidden port",
+                "protocol": "tcp",
+                "difficulty": 25000000,
+                "desc": "High end CPUs / low end/mid range GPUs"
+            },
+            {
+                "port": 9999,
+                "protocol": "tcp",
+                "difficulty": 25000000,
                 "hidden": true
             }
         ],
@@ -55,7 +59,15 @@
         },
         "fixedDiff": {
             "enabled": true,
-            "addressSeparator": "."
+            "addressSeparator": "_"
+        },
+        "userDonations": {
+            "enabled": true,
+            "addressSeparator": "#",
+            "percentSeparator": "%",
+            "minDonation": 0.1,
+            "maxDonation": 10,
+            "defaultDonation": "1Ho5gYpMDmfaQ68L5bTBg8dSvCw3Yp5YSBkbyz5yYXsPbbVvWNYwya16SB8JZBtbX8Qk94vgm4Lkz3HgP8Bskgha8csJ8F8"
         },
         "shareTrust": {
             "enabled": true,
@@ -77,8 +89,8 @@
         "interval": 600,
         "maxAddresses": 50,
         "mixin": 3,
-        "transferFee": 5000000000,
-        "minPayment": 100000000000,
+        "transferFee":    2000000000,
+        "minPayment":   100000000000,
         "maxTransactionAmount": 0,
         "denomination": 100000000000
     },
@@ -87,7 +99,7 @@
         "enabled": true,
         "interval": 30,
         "depth": 60,
-        "poolFee": 2,
+        "poolFee": 1.7,
         "devDonation": 0.1,
         "coreDevDonation": 0.1,
         "extraFeaturesDevDonation":0.1
@@ -105,14 +117,27 @@
 
     "daemon": {
         "host": "127.0.0.1",
-        "port": 42081
+        "port": 10102
     },
 
     "wallet": {
-        "host": "127.0.0.1",
-        "port": 8082
+        "host": "localhost",
+        "port": 10103
     },
 
+    "purchasesWallet": {
+        "host": "localhost",
+        "port": 20103
+    },
+    "purchases": {
+	"requiredAmount": 10,
+	"emailUrl": "http://cncoin.farm/index.html",
+	"waitTime": 2400,
+	"paymentAddress": "@aliasreq",
+	"supportEmail": "cncoinpayments@gmail.com",
+	"checkInterval": 10000,
+	"salt": "somesalt"
+    },
     "redis": {
         "host": "127.0.0.1",
         "port": 6379
@@ -166,6 +191,12 @@
             "hashrate": {
                 "enabled": true,
                 "updateInterval": 180,
+                "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "donationHashrate": {
+                "enabled": true,
+                "updateInterval": 360,
                 "stepInterval": 1800,
                 "maximumPeriod": 86400
             },

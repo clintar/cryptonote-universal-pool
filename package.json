@@ -15,7 +15,7 @@
         "dateformat": "*",
         "base58-native": "*",
         "multi-hashing": "git://github.com/clintar/node-multi-hashing.git",
-        "cryptonote-util": "git://github.com/clintar/node-cryptonote-util.git",
+        "cryptonote-util": "git://github.com/clintar/node-cryptonote-util.git#lui_support",
 	"nodemailer": "*"
     },
     "engines": {

@@ -83,7 +83,11 @@
             "checkThreshold": 30
         }
     },
-
+        "slushMining": {
+            "enabled": true,
+            "weight": 120,
+            "lastBlockCheckRate": 1
+        },
     "payments": {
         "enabled": true,
         "interval": 600,

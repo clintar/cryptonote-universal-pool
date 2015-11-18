@@ -235,12 +235,16 @@ Explanation for each field:
         "invalidPercent": 25, //What percent of invalid shares triggers ban
         "checkThreshold": 30 //Perform check when this many shares have been submitted
     },
-    /* Slush Mining is a reward calculation technique which disincentivizes pool hopping and rewards users to mine with the pool steadily: Values of each share decrease in time – younger shares are valued higher than older shares.
-    More about it here: https://mining.bitcoin.cz/help/#!/manual/rewards */
+    /* Slush Mining is a reward calculation technique which disincentivizes pool hopping 
+    and rewards users to mine with the pool steadily: Values of each share decrease in 
+    time – younger shares are valued higher than older shares.    More about it 
+    here: https://mining.bitcoin.cz/help/#!/manual/rewards */
     "slushMining": {
         "enabled": true, //Enables slush mining. Recommended for pools catering to professional miners
         "weight": 120, //defines how fast value assigned to a share declines in time
-        "lastBlockCheckRate": 1 //How often the pool checks for the timestamp of the last block. Lower numbers increase load for the Redis db, but make the share value more precise.    }
+        "lastBlockCheckRate": 1 
+    /* How often the pool checks for the timestamp of the last block. Lower numbers 
+    increase load for the Redis db, but make the share value more precise. */
     },
 
 /* Module that sends payments to miners according to their submitted shares. */
@@ -278,6 +282,16 @@ Explanation for each field:
     "port": 8117,
     "blocks": 30, //amount of blocks to send at a time
     "payments": 30, //amount of payments to send at a time
+    "ssl": false, 
+    /* enable ssl api listener. if enabled, a second listener is lauched with ssl. 
+    A cert and key are required. not tested without a chain file. Set the 
+    website/config.js to point to this port. If your web server is on ssl, you 
+    will probably need to have the listener on ssl or the browser may not allow 
+    connection to non-ssl api port */
+    "sslport": 8119, // port to use for the ssl listener
+    "sslcert": "./certs/cert.pem", //cert file
+    "sslkey": "./certs/privkey.pem", //private key file
+    "sslca": "./certs/chain.pem", //ca chain file if needed
     "password": "test" //password required for admin stats
 },
 

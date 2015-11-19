@@ -84,7 +84,7 @@
         },
         "slushMining": {
             "enabled": false,
-            "weight": 120,
+            "weight": 240,
             "lastBlockCheckRate": 1
         }
     },

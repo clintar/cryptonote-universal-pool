@@ -61,8 +61,8 @@ var selectedModules = (function(){
                     log('error', logSystem, 'Invalid module "%s", valid modules: %s', [module, validModules.join(', ')]);
                     process.exit();
                 }
-                return moduleNames;
             }
+            return moduleNames;
         }
     }
 })();
@@ -258,9 +258,9 @@ function spawnPurchaseProcessor(){
         workerType: 'purchaseProcessor'
     });
 	    worker.on('exit', function(code, signal){
-        log('error', logSystem, 'Payment Checker died, spawning replacement...');
+        log('error', logSystem, 'Purchase processor died, spawning replacement...');
         setTimeout(function(){
-            spawnApi();
+            spawnPurchaseProcessor()
         }, 2000);
     });
 }

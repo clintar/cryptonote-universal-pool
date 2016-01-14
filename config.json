@@ -55,7 +55,8 @@
             "targetTime": 100,
             "retargetTime": 30,
             "variancePercent": 30,
-            "maxJump": 100
+            "maxJump": 100,
+            "maxIterations": 30
         },
         "fixedDiff": {
             "enabled": true,

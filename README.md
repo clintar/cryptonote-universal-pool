@@ -68,6 +68,8 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * FantomCoin & MonetaVerde support
 * Set fixed difficulty on miner client by passing "address" param with ".[difficulty]" postfix
 * Prevent "transaction is too big" error with "payments.maxTransactionAmount" option
+  * Also will retry payments after 5 seconds if maxTransactionAmount is hit, since that means
+  * not all payments would have processed.
 
 
 ### Community / Support
@@ -208,11 +210,13 @@ Explanation for each field:
         "targetTime": 100, //Try to get 1 share per this many seconds
         "retargetTime": 30, //Check to see if we should retarget every this many seconds
         "variancePercent": 30, //Allow time to very this % from target without retargeting
-        "maxJump": 100 //Limit diff percent increase/decrease in a single retargetting
+        "maxJump": 100, //Limit diff percent increase/decrease in a single retargetting
+        "maxIterations": 30 //Number of times to retarget difficulty. 0 means no maximum
+        /* Expect we know pretty well after this many. */
     },
 
     /* Set difficulty on miner client side by passing <address> param with .<difficulty> postfix
-       minerd -u 4AsBy39rpUMTmgTUARGq2bFQWhDhdQNekK5v4uaLU699NPAnx9CubEJ82AkvD5ScoAZNYRwBxybayainhyThHAZWCdKmPYn.5000 */
+       minerd -u 4AsBy39rpUMTmgTUARGq2bFQWhDhdQNekK5v4uaLU699NPAnx9CubEJ82AkvD5ScoAZNYRwBxybayainhyThHAZWCdKmPYn_5000 */
     "fixedDiff": {
         "enabled": true,
         "separator": ".", // character separator between <address> and <difficulty>

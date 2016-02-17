@@ -284,6 +284,7 @@
                 <th><i class="fa fa-paw"></i> Transaction Hash</th>
                 <th><i class="fa fa-money"></i> Amount</th>
                 <th><i class="fa fa-sitemap"></i> Mixin</th>
+                <th><i class="fa fa-paw"></i> Payment Id</th>
             </tr>
             </thead>
             <tbody id="payments_rows">
@@ -467,7 +468,8 @@
         return '<td>' + formatDate(payment.time) + '</td>' +
                 '<td>' + formatPaymentLink(payment.hash) + '</td>' +
                 '<td>' + getReadableCoins(payment.amount, 4, true) + '</td>' +
-                '<td>' + payment.mixin + '</td>';
+                '<td>' + payment.mixin + '</td>' + 
+                '<td>' + (typeof payment.recipients !== 'undefined' ? payment.recipients : '') + '</td>';
     }
 
     var xhrAddressPoll;

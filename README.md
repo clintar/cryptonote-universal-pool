@@ -512,8 +512,8 @@ curl 127.0.0.1:18081/json_rpc -d '{"method":"getblockheaderbyheight","params":{"
 
 Donations
 ---------
-* BTC: `1667jMt7NTZDaC8WXAxtMYBR8DPWCVoU4d`
-* MRO: `48Y4SoUJM5L3YXBEfNQ8bFNsvTNsqcH5Rgq8RF7BwpgvTBj2xr7CmWVanaw7L4U9MnZ4AG7U6Pn1pBhfQhFyFZ1rL1efL8z`
+* BTC: `16gHU8K5h3djmwAb6xUCaGsLe2z21L19Y6`
+* MRO: `4AabFTaEt6KG18tux7yqS8Fv63JoyXsitjGSksrXCqZwBeJKKnphSx4KNsocn5kqWg6cMjeuNzssTHeefHvN8m1V6QqseCH`
 
 Credits
 ===

@@ -107,7 +107,7 @@
     <div class="col-md-4 stats marketRate">
         <h3 id="marketHeader">Market</h3>
         <div class="marketFooter">Updated: <span id="marketLastUpdated"></span></div>
-        <div class="marketFooter">Powered by <a href="https://www.cryptonator.com/">Cryptonator</a></div>
+        <div class="marketFooter">Powered by <a href="https://apicryptonator.com/">Cryptonator</a></div>
     </div>
 </div>
 
@@ -404,7 +404,7 @@
         for (var i = 0; i < cryptonatorWidget.length; i++){
             (function(i){
             	cryptonatorWidget[i] = cryptonatorWidget[i].replace('{symbol}', lastStats.config.symbol.toLowerCase());
-                xhrMarketGets[cryptonatorWidget[i]] = $.get('https://www.cryptonator.com/api/ticker/' + cryptonatorWidget[i], function(data){
+                xhrMarketGets[cryptonatorWidget[i]] = $.get('https://api.cryptonator.com/api/ticker/' + cryptonatorWidget[i], function(data){
                     if(data.error) {
                         return;
                     }

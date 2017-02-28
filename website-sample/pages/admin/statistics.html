@@ -25,6 +25,8 @@
 		$.ajax({
 			url: api + '/admin_stats',
 			data: {password: password},
+			dataType: 'json',
+			cache: 'false',
 			success: function(data) {
 				docCookies.setItem('password', password, Infinity);
 				$('#loading').hide();
